@@ -1,0 +1,16 @@
+{
+  "name": "webcam-ai",
+  "version": "1.0.0",
+  "description": "Webcam integration for openAI vision API",
+  "main": "index.js",
+  "keywords": [
+    "openai",
+    "webcam"
+  ],
+  "author": "glenn-feys",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glennfeys/webcam-ai"
+  }
+}

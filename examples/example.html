@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebcamAI Example</title>
+    <script type="module" src="../src/WebcamAI.js"></script>
+</head>
+<body>
+    <h1>WebcamAI Example</h1>
+    <video id="webcam" width="640" height="480" autoplay playsinline></video>
+    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+
+    <br>
+    <label for="apiKey">OpenAI API Key:</label>
+    <br>
+    <input type="password" id="apiKey" style="width:640px" placeholder="Enter your OpenAI API key">
+    <br><br>
+
+    <label for="promptText">Prompt:</label>
+    <br>
+    <input type="text" id="promptText" style="width:640px" placeholder="Enter a prompt" >
+    <br><br>
+
+    <button id="analyzeButton">Analyze Image</button>
+
+    <script type="module">
+        import WebcamAI from '../src/webcamAI.js';
+
+        // Create a new instance of WebcamAI
+        const webcamAI = new WebcamAI();
+
+        const analyzeButton = document.getElementById('analyzeButton');
+        // When the analyze button is clicked, the promptWebcam method is called with the prompt text and the image from the webcam
+        analyzeButton.addEventListener('click', async () => {
+            try {
+                const apiKey = document.getElementById('apiKey').value;
+                const promptText = document.getElementById('promptText').value;
+
+                if (!apiKey) {
+                    alert('Please enter your OpenAI API key.');
+                    return;
+                }
+
+                if (!promptText) {
+                    alert('Please enter a prompt.');
+                    return;
+                }
+
+                webcamAI.setApiKey(apiKey);
+
+                const analysis = await webcamAI.promptWebcam(promptText);
+                alert(analysis.choices[0].message.content);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
