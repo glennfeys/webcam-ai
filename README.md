@@ -48,7 +48,7 @@ WebcamAI is a JavaScript package designed to integrate webcam functionalities wi
 
 WebcamAI handles webcam operations and integrates with OpenAI's vision API.
 
-```
+```js
 //TODO change path to package path
 import WebcamAI from "path-to-package";
 
